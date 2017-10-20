@@ -51,7 +51,8 @@
 								<tbody>
 									@foreach ($tasks as $task)
 										<tr>
-											<td class="table-text"><div>{{ $task->name }}</div></td>
+											<td class="table-text">
+											<div><a href="task/{{ $task->id }}">{{ $task->name }}</div></td>
 											
 											<!-- Gumb za brisanje -->
 											<td>
