@@ -10,14 +10,19 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+
+use App\Task;
 //prikaz svih taskova u bazi
 Route::get('/', function () {
     //return view('tasks');
+	$tasks = Task::orderBy('created_At', 'asc')->get();
+	
+	return view('tasks', ['tasks' => $tasks ]);
+	
 });
 
-
 //dodavanje novog taska
-Route::post('/task', function {Request $request} {
+Route::post('/task', function (Request $request) {
 	$validator = Validator::make($request->all(), [
 		'name' => 'required|max:255',
 	]);
